@@ -24,7 +24,7 @@ Content-Type: application/json
   "lastName": "Rossi",
   "firstName": "Mario",
   "email": "mario.rossi@example.com",
-  "department": "Engineering",
+  "department": "Biology",
   "startDate": "2025-11-01",
   "endDate": "2025-12-01"
 }

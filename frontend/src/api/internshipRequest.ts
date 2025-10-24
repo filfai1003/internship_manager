@@ -1,5 +1,8 @@
 const BACKEND = 'http://localhost:3000';
 
+
+import { InternshipRequest } from '@internship/shared';
+
 export type InternshipRequestInput = {
   firstName: string;
   lastName: string;
@@ -10,7 +13,7 @@ export type InternshipRequestInput = {
   motivation?: string;
 };
 
-export async function listRequests(): Promise<any[]> {
+export async function listRequests(): Promise<InternshipRequest[]> {
   const res = await fetch(`${BACKEND}/internship-requests`);
   if (!res.ok) {
     const txt = await res.text().catch(() => res.statusText || 'Error');
@@ -19,7 +22,7 @@ export async function listRequests(): Promise<any[]> {
   return res.json();
 }
 
-export async function getRequestById(id: number): Promise<any | null> {
+export async function getRequestById(id: number): Promise<InternshipRequest | null> {
   const res = await fetch(`${BACKEND}/internship-requests/${id}`);
   if (res.status === 404) return null;
   if (!res.ok) {
@@ -29,7 +32,7 @@ export async function getRequestById(id: number): Promise<any | null> {
   return res.json();
 }
 
-export async function createRequest(payload: InternshipRequestInput): Promise<any> {
+export async function createRequest(payload: InternshipRequestInput): Promise<InternshipRequest> {
   const res = await fetch(`${BACKEND}/internship-requests`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -42,7 +45,7 @@ export async function createRequest(payload: InternshipRequestInput): Promise<an
   return res.json();
 }
 
-export async function updateRequestStatus(id: number, status: string): Promise<any> {
+export async function updateRequestStatus(id: number, status: string): Promise<InternshipRequest> {
   const res = await fetch(`${BACKEND}/internship-requests/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },

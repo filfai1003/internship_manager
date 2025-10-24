@@ -2,7 +2,7 @@
 
 export enum InternshipStatus {
   Pending = "Pending",
-  Approved = "Approved",
+  Accepted = "Accepted",
   Rejected = "Rejected",
 }
 

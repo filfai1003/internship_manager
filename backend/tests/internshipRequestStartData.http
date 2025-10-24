@@ -1,0 +1,91 @@
+### Crea richiesta 1 (con motivazione)
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+  "lastName": "Rossi",
+  "firstName": "Mario",
+  "email": "mario.rossi@example.com",
+  "department": "Engineering",
+  "startDate": "2025-11-01",
+  "endDate": "2025-12-01",
+  "motivation": "Learn about backend development"
+}
+
+### Crea richiesta 2 (SENZA motivazione)
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+    "lastName": "Bianchi",
+    "firstName": "Luisa",
+    "email": "luisa.bianchi@example.com",
+    "department": "Mathematics",
+    "startDate": "2025-10-01",
+    "endDate": "2025-11-01"
+}
+
+### Crea richiesta 3 (con motivazione)
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+    "lastName": "Verdi",
+    "firstName": "Giovanni",
+    "email": "giovanni.verdi@example.com",
+    "department": "Computer Science",
+    "startDate": "2025-09-01",
+    "endDate": "2025-10-01",
+    "motivation": "Voglio approfondire le mie conoscenze in informatica"
+}
+
+### Crea richiesta 4 (SENZA motivazione)
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+    "lastName": "Russo",
+    "firstName": "Carla",
+    "email": "carla.russo@example.com",
+    "department": "Chemistry",
+    "startDate": "2025-11-15",
+    "endDate": "2025-12-15"
+}
+
+### Crea richiesta 5 (con motivazione)
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+    "lastName": "Neri",
+    "firstName": "Anna",
+    "email": "anna.neri@example.com",
+    "department": "Physics",
+    "startDate": "2025-12-01",
+    "endDate": "2026-01-01",
+    "motivation": "Interessata alla ricerca in fisica applicata"
+}
+
+### Accetta richiesta 1
+PATCH http://localhost:3000/internship-requests/1
+Content-Type: application/json
+
+{
+  "status": "Accepted"
+}
+
+### Accetta richiesta 3
+PATCH http://localhost:3000/internship-requests/3
+Content-Type: application/json
+
+{
+    "status": "Accepted"
+}
+
+### Rifiuta richiesta 2 (con motivazione di rifiuto)
+PATCH http://localhost:3000/internship-requests/2
+Content-Type: application/json
+
+{
+    "status": "Rejected"
+}
