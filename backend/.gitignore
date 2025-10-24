@@ -1,0 +1,9 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+# Ignore local sqlite DB created by Prisma migrations
+dev.db
+
+# If a generated client path exists, ignore it
+generated/

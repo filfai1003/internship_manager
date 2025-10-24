@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model InternshipRequest {
+  id         Int      @id @default(autoincrement())
+  lastName   String
+  firstName  String
+  email      String
+  department String
+  startDate  DateTime
+  endDate    DateTime
+  status     String   @default("Pending")
+  motivation String?
+  createdAt  DateTime @default(now())
+}

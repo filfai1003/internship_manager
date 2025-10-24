@@ -8,6 +8,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      - DATABASE_URL=file:./dev.db
+    volumes:
+      - ./backend/dev.db:/workspace/backend/dev.db
 
   frontend:
     build:
