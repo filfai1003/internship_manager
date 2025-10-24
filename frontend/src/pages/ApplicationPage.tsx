@@ -15,10 +15,10 @@ const ApplicationPage: FC = () => {
 		const fields = [
 			{ name: 'firstName', label: 'First name', placeholder: 'Mario', rules: [{ required: true }] },
 			{ name: 'lastName', label: 'Last name', placeholder: 'Rossi', rules: [{ required: true }] },
-			{ name: 'email', label: 'Email', placeholder: 'mail@example.com', type: 'email' },
-			{ name: 'department', label: 'Department', placeholder: 'Engineering' },
-			{ name: 'startDate', label: 'Start date', placeholder: 'YYYY-MM-DD' },
-			{ name: 'endDate', label: 'End date', placeholder: 'YYYY-MM-DD' },
+			{ name: 'email', label: 'Email', placeholder: 'mail@example.com', type: 'email', rules: [{ required: true }] },
+			{ name: 'department', label: 'Department', placeholder: 'Engineering', rules: [{ required: true }] },
+			{ name: 'startDate', label: 'Start date', placeholder: 'YYYY-MM-DD', rules: [{ required: true }] },
+			{ name: 'endDate', label: 'End date', placeholder: 'YYYY-MM-DD', rules: [{ required: true }] },
 			{ name: 'motivation', label: 'Motivation', placeholder: "Why do you want this internship?", type: 'textarea' },
 		];
 
