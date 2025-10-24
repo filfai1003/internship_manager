@@ -12,7 +12,7 @@ export interface InternshipRequest {
   firstName: string;
   email: string;
   department: string;
-  startDate: string; // use ISO date strings (e.g. "2025-10-24") or full ISO timestamps TODO choose one of the two
+  startDate: string; // use ISO date strings ("YYYY-MM-DD")
   endDate: string;
   status: InternshipStatus;
   motivation?: string;
