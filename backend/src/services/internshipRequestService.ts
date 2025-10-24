@@ -1,4 +1,4 @@
-import { createRequest, listRequests, resetStore } from '../database/models/internshipRequest.model';
+import { createRequest, listRequests, resetStore, getRequestById, updateRequestStatus } from '../database/models/internshipRequest.model';
 import { InternshipRequest } from '../../../shared/types/internshipRequest';
 import { isValidEmail, isValidISODate } from '../utils/validator';
 import { compareDates } from '../utils/dateTools';
@@ -42,4 +42,22 @@ export async function listInternshipRequests(): Promise<InternshipRequest[]> {
 
 export async function resetInternshipRequests(): Promise<void> {
 	return await resetStore();
+}
+
+export async function getInternshipRequest(id: number): Promise<InternshipRequest> {
+	const rec = await getRequestById(id);
+	if (!rec) throw new Error('Not found');
+	return rec;
+}
+
+export async function updateInternshipRequestStatus(id: number, status: string): Promise<InternshipRequest> {
+	const allowed = ['Pending', 'Accepted', 'Rejected'];
+	if (!allowed.includes(status)) {
+		throw new Error('Invalid status');
+	}
+	try {
+		return await updateRequestStatus(id, status);
+	} catch (err) {
+		throw new Error('Not found');
+	}
 }

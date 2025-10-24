@@ -49,3 +49,22 @@ Content-Type: application/json
   "startDate": "2025-12-01",
   "endDate": "2025-11-01"
 }
+
+### Get internship request by ID 2 (Not existing)
+GET http://localhost:3000/api/internship-requests/2
+
+### Update status for ID 2 (Not existing)
+PATCH http://localhost:3000/api/internship-requests/2
+Content-Type: application/json
+
+{
+  "status": "Accepted"
+}
+
+### Update status for non-existing ID 999 - expect 404
+PATCH http://localhost:3000/api/internship-requests/1
+Content-Type: application/json
+
+{
+  "status": "Invalid status"
+}

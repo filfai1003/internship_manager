@@ -31,3 +31,14 @@ Content-Type: application/json
 
 ### Reset internship requests store
 DELETE  http://localhost:3000/api/internship-requests/
+
+### Get internship request by ID 1
+GET http://localhost:3000/api/internship-requests/1
+
+### Update status for ID 1
+PATCH http://localhost:3000/api/internship-requests/1
+Content-Type: application/json
+
+{
+  "status": "Accepted"
+}

@@ -52,3 +52,36 @@ export async function resetStore() {
 	await prisma.internshipRequest.deleteMany();
 }
 
+export async function getRequestById(id: number): Promise<InternshipRequest | null> {
+	const r = await prisma.internshipRequest.findUnique({ where: { id } });
+	if (!r) return null;
+	return {
+		id: r.id,
+		lastName: r.lastName,
+		firstName: r.firstName,
+		email: r.email,
+		department: r.department,
+		startDate: r.startDate.toISOString(),
+		endDate: r.endDate.toISOString(),
+		status: r.status as any,
+		motivation: r.motivation ?? undefined,
+		createdAt: r.createdAt.toISOString(),
+	};
+}
+
+export async function updateRequestStatus(id: number, status: string): Promise<InternshipRequest> {
+	const updated = await prisma.internshipRequest.update({ where: { id }, data: { status } });
+	return {
+		id: updated.id,
+		lastName: updated.lastName,
+		firstName: updated.firstName,
+		email: updated.email,
+		department: updated.department,
+		startDate: updated.startDate.toISOString(),
+		endDate: updated.endDate.toISOString(),
+		status: updated.status as any,
+		motivation: updated.motivation ?? undefined,
+		createdAt: updated.createdAt.toISOString(),
+	};
+}
+
