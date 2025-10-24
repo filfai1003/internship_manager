@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { List, Button, Spin, Empty, Card } from 'antd';
 import { formatDate } from '../utils/formatDate';
 import { useNavigate } from 'react-router-dom';
 import type { FC } from 'react';
 
-type Internship = {
-	id: number;
-	firstName: string;
-	lastName: string;
-	email?: string;
-	department?: string;
-	startDate?: string;
-	endDate?: string;
-	status?: string;
-};
 
+
+import { InternshipRequest, InternshipStatus } from '@internship/shared';
 import { listRequests } from '../api/internshipRequest';
 import FilterBar from '../components/FilterBar';
 
 const HomePage: FC = () => {
 	const navigate = useNavigate();
-	const [items, setItems] = useState<Internship[] | null>(null);
+	const [items, setItems] = useState<InternshipRequest[] | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [departmentFilter, setDepartmentFilter] = useState<string>('');
@@ -60,7 +52,8 @@ const HomePage: FC = () => {
 					onDepartmentChange={setDepartmentFilter}
 					status={statusFilter}
 					onStatusChange={setStatusFilter}
-					statusOptions={items ? Array.from(new Set(items.map(i => i.status).filter(Boolean))) as string[] : []}
+					// Use the shared enum for status options to keep values consistent across front/backend
+					statusOptions={Object.values(InternshipStatus)}
 				/>
 
 				<Card>
@@ -69,7 +62,7 @@ const HomePage: FC = () => {
 							<Spin />
 						</div>
 					) : error ? (
-						<div style={{ color: 'var(--ant-error-color)' }}>{"Error while loading"}</div>
+						<div style={{ color: 'var(--ant-error-color)' }}>{error || 'Error while loading'}</div>
 					) : !items || items.length === 0 ? (
 						<Empty description="No requests found" />
 					) : (
