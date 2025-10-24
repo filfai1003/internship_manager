@@ -16,5 +16,18 @@ Content-Type: application/json
   "motivation": "Learn about backend development"
 }
 
+### Create a valid internship request without optional field
+POST http://localhost:3000/api/internship-requests
+Content-Type: application/json
+
+{
+  "lastName": "Rossi",
+  "firstName": "Mario",
+  "email": "mario.rossi@example.com",
+  "department": "Engineering",
+  "startDate": "2025-11-01",
+  "endDate": "2025-12-01"
+}
+
 ### Reset internship requests store
 DELETE  http://localhost:3000/api/internship-requests/
