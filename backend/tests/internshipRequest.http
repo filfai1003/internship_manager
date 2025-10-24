@@ -1,9 +1,9 @@
 ### List internship requests (should be empty initially)
-GET http://localhost:3000/api/internship-requests
+GET http://localhost:3000/internship-requests
 Accept: application/json
 
 ### Create a valid internship request
-POST http://localhost:3000/api/internship-requests
+POST http://localhost:3000/internship-requests
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Create a valid internship request without optional field
-POST http://localhost:3000/api/internship-requests
+POST http://localhost:3000/internship-requests
 Content-Type: application/json
 
 {
@@ -30,13 +30,13 @@ Content-Type: application/json
 }
 
 ### Reset internship requests store
-DELETE  http://localhost:3000/api/internship-requests/
+DELETE  http://localhost:3000/internship-requests/
 
 ### Get internship request by ID 1
-GET http://localhost:3000/api/internship-requests/1
+GET http://localhost:3000/internship-requests/1
 
 ### Update status for ID 1
-PATCH http://localhost:3000/api/internship-requests/1
+PATCH http://localhost:3000/internship-requests/1
 Content-Type: application/json
 
 {

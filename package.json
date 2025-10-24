@@ -12,10 +12,17 @@
     "start:backend": "npm --workspace backend run dev"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.4",
-    "@types/node": "^24.9.1"
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/react-router-dom": "^5.3.3"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "antd": "^5.27.6",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "react-router-dom": "^7.9.4"
   }
 }
