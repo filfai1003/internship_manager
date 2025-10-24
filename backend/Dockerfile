@@ -1,20 +1,31 @@
 # Backend: build TypeScript and run node
 FROM node:18-alpine AS builder
-WORKDIR /app
+WORKDIR /workspace/backend
 
-# copy package files for install
+# copy package files and prisma schema for install & client generation
 COPY backend/package*.json ./
+COPY backend/prisma ./prisma
+
+# copy shared folder so relative imports to ../shared resolve during build
+COPY shared ../shared
+
+# install dependencies and generate Prisma client
+RUN npm install
+RUN npx prisma generate
+
+# copy source and build
 COPY backend/tsconfig.json ./
 COPY backend/src ./src
-
-# install dependencies and build
-RUN npm install
 RUN npm run build
 
-# run the built backend
+# final runtime image
 FROM node:18-alpine
-WORKDIR /app
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/dist ./dist
+WORKDIR /workspace/backend
+COPY --from=builder /workspace/backend/package*.json ./
+COPY --from=builder /workspace/backend/node_modules ./node_modules
+COPY --from=builder /workspace/backend/dist ./dist
+COPY --from=builder /workspace/backend/prisma ./prisma
+
 EXPOSE 3000
-CMD ["node","dist/index.js"]
+# on container start, apply pending migrations then start the app
+CMD ["sh","-c","npx prisma migrate deploy && node dist/backend/src/index.js"]

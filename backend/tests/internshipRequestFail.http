@@ -1,0 +1,70 @@
+### Missing required field (empty lastName) - expect 400
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+  "lastName": "",
+  "firstName": "Giulia",
+  "email": "giulia.verdi@example.com",
+  "department": "Design",
+  "startDate": "2025-11-10",
+  "endDate": "2025-12-10"
+}
+
+### Invalid email format - expect 400
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+  "lastName": "Verdi",
+  "firstName": "Giulia",
+  "email": "not-an-email",
+  "department": "Design",
+  "startDate": "2025-11-10",
+  "endDate": "2025-12-10"
+}
+
+### Invalid date format - expect 400
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+  "lastName": "Bianchi",
+  "firstName": "Luca",
+  "email": "luca.bianchi@example.com",
+  "department": "HR",
+  "startDate": "2025-13-01",
+  "endDate": "2025-14-01"
+}
+
+### endDate before startDate - expect 400
+POST http://localhost:3000/internship-requests
+Content-Type: application/json
+
+{
+  "lastName": "Bianchi",
+  "firstName": "Luca",
+  "email": "luca.bianchi@example.com",
+  "department": "HR",
+  "startDate": "2025-12-01",
+  "endDate": "2025-11-01"
+}
+
+### Get internship request by ID 2 (Not existing)
+GET http://localhost:3000/internship-requests/2
+
+### Update status for ID 2 (Not existing)
+PATCH http://localhost:3000/internship-requests/2
+Content-Type: application/json
+
+{
+  "status": "Accepted"
+}
+
+### Update status for non-existing ID 999 - expect 404
+PATCH http://localhost:3000/internship-requests/1
+Content-Type: application/json
+
+{
+  "status": "Invalid status"
+}

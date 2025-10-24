@@ -49,6 +49,9 @@ coverage/
 docker-compose.override.yml
 .dockerignore
 
+# Prisma local DB
+backend/dev.db
+
 # Misc caches
 .cache/
 *.tgz

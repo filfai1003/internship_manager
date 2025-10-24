@@ -1,7 +1,10 @@
 import express from 'express';
-import apiRouter from './api/router';
+import cors from 'cors';
+import internshipRequestRouter from './routes/internshipRequestRouter';
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -9,6 +12,6 @@ app.use(express.json());
 app.get('/', (req, res) => res.json({ status: 'ok' }));
 
 // API router mounted at /api
-app.use('/api', apiRouter);
+app.use('/internship-requests', internshipRequestRouter);
 
 export default app;
