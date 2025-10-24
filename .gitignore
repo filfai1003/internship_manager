@@ -1,0 +1,59 @@
+
+# Node
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+**/dist/
+**/build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Tests / coverage
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite / Next / Parcel caches
+.vite/
+.next/
+.parcel-cache/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Misc caches
+.cache/
+*.tgz
+
+# Shared
+shared/node_modules/
+
+

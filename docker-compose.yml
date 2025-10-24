@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: internship_manager_backend:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: internship_manager_frontend:latest
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+  announce:
+    image: alpine:3.18
+    depends_on:
+      - backend
+      - frontend
+    entrypoint: ["sh","-c","echo 'Services started:'; echo 'Frontend -> http://localhost:5173'; echo 'Backend  -> http://localhost:3000'; sleep 2"]

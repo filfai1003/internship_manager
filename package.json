@@ -1,0 +1,21 @@
+{
+  "name": "internship_manager",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "bootstrap": "npm install",
+    "start:frontend": "npm --workspace frontend run dev",
+    "start:backend": "npm --workspace backend run dev"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.4",
+    "@types/node": "^24.9.1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
